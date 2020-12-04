@@ -18,7 +18,7 @@
         <v-icon class="font-weight-bold">mdi-export</v-icon>
       </v-btn>
     </v-toolbar>
-    <v-navigation-drawer v-model="drawer" temporary absolute class="primary">
+    <v-navigation-drawer v-model="drawer" temporary absolute class="blue">
       <v-list nav dense>
         <v-list-item-group v-model="selectedItem" color="white">
           <v-list-item
