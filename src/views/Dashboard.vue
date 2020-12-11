@@ -1,8 +1,8 @@
 <template>
-  <div class="home">
-    <h1>this is a home page</h1>
-    
-    
+  <div class="dashboard">
+    <v-container>
+      <v-subheader class="grey--text">dashboard</v-subheader>
+    </v-container>
   </div>
 </template>
 

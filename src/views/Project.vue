@@ -1,6 +1,8 @@
 <template>
-  <div class="home">
-    <h1>this is a project page</h1>
+  <div class="project">
+    <v-container>
+      <v-subheader class="grey--text">project</v-subheader>
+    </v-container>
   </div>
 </template>
 
