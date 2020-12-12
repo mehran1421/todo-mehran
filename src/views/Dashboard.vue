@@ -6,27 +6,41 @@
 
     <v-container class="my-5">
       <v-row align="left" class="mb-5">
-        <v-btn
-          tile
-          color="grey lighten-4"
-          small
-          elevation="5"
-          @click="sortBy('title')"
-        >
-          <v-icon small left>mdi-folder</v-icon>
-          <span class="caption">by project name </span>
-        </v-btn>
-        <v-btn
-          tile
-          color="grey lighten-4"
-          small
-          class="ml-3"
-          elevation="5"
-          @click="sortBy('person')"
-        >
-          <v-icon small left>mdi-person</v-icon>
-          <span class="caption">by person</span>
-        </v-btn>
+        <v-tooltip top>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              tile
+              color="grey lighten-4"
+              small
+              elevation="5"
+              @click="sortBy('title')"
+              v-bind="attrs"
+              v-on="on"
+            >
+              <v-icon small left>mdi-folder</v-icon>
+              <span class="caption">by project name </span>
+            </v-btn>
+          </template>
+          <span>sorted by title project </span>
+        </v-tooltip>
+        <v-tooltip top>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              tile
+              color="grey lighten-4"
+              small
+              class="ml-3"
+              elevation="5"
+              @click="sortBy('person')"
+              v-bind="attrs"
+              v-on="on"
+            >
+              <v-icon small left>mdi-person</v-icon>
+              <span class="caption">by person</span>
+            </v-btn>
+          </template>
+          <span>sorted by author project </span>
+        </v-tooltip>
       </v-row>
       <v-row
         v-for="project in projects"
@@ -39,7 +53,7 @@
           <div>{{ project.title }}</div>
         </v-col>
         <v-col cols="11" sm="11" md="2">
-          <div class="caption font-weight-black grey--text">Project title</div>
+          <div class="caption font-weight-black grey--text">person</div>
           <div>{{ project.person }}</div>
         </v-col>
         <v-col cols="11" sm="11" md="2">
