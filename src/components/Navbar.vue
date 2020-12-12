@@ -54,6 +54,9 @@
           <p class="white--text">Mehran Kamrani</p>
         </v-row>
       </v-responsive>
+      <v-row justify="center">
+        <Popup />
+      </v-row>
       <v-list nav dense>
         <v-list-item-group v-model="selectedItem" color="white">
           <v-list-item
@@ -77,7 +80,11 @@
 </template>
 
 <script>
+import Popup from "@/components/Popup";
 export default {
+  components: {
+    Popup,
+  },
   data() {
     return {
       drawer: false,
