@@ -29,6 +29,8 @@
           <v-avatar size="100">
             <img src="/1.jpg" />
           </v-avatar>
+        </v-row>
+        <v-row justify="center" class="mt-4">
           <p class="white--text">Mehran Kamrani</p>
         </v-row>
       </v-responsive>
