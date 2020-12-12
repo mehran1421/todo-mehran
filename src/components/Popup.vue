@@ -14,74 +14,88 @@
       </template>
       <v-card>
         <v-card-title>
-          <span class="headline">User Profile</span>
+          <span class="headline">New Project</span>
         </v-card-title>
+
         <v-card-text>
-          <v-container>
-            <v-row>
-              <v-col cols="12" sm="6" md="4">
-                <v-text-field label="Legal first name*" required></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6" md="4">
-                <v-text-field
-                  label="Legal middle name"
-                  hint="example of helper text only on focus"
-                ></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6" md="4">
-                <v-text-field
-                  label="Legal last name*"
-                  hint="example of persistent helper text"
-                  persistent-hint
-                  required
-                ></v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field label="Email*" required></v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field
-                  label="Password*"
-                  type="password"
-                  required
-                ></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6">
-                <v-select
-                  :items="['0-17', '18-29', '30-54', '54+']"
-                  label="Age*"
-                  required
-                ></v-select>
-              </v-col>
-              <v-col cols="12" sm="6">
-                <v-autocomplete
-                  :items="[
-                    'Skiing',
-                    'Ice hockey',
-                    'Soccer',
-                    'Basketball',
-                    'Hockey',
-                    'Reading',
-                    'Writing',
-                    'Coding',
-                    'Basejump',
-                  ]"
-                  label="Interests"
-                  multiple
-                ></v-autocomplete>
-              </v-col>
-            </v-row>
-          </v-container>
-          <small>*indicates required field</small>
+          <v-form class="px-3">
+            <v-container>
+              <v-row>
+                <v-col cols="12" sm="4" md="4">
+                  <v-text-field
+                    label="Title*"
+                    hint="write title project name"
+                    prepend-icon="mdi-folder"
+                    required
+                    v-model="title"
+                  ></v-text-field>
+                </v-col>
+                <v-col cols="12" sm="4" md="5">
+                  <v-text-field
+                    label="Legal Person name"
+                    hint="you can write name and family"
+                    prepend-icon="mdi-person"
+                    v-model="person"
+                  ></v-text-field>
+                </v-col>
+                <v-col cols="12" sm="4" md="3">
+                  <v-select
+                    :items="['overdue', 'complete', 'ongoing']"
+                    label="status"
+                    required
+                    v-model="status"
+                  ></v-select>
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="12" sm="12">
+                  <v-textarea
+                    label="Legal information"
+                    hint="description for project"
+                    prepend-icon="mdi-edit"
+                    v-model="content"
+                  >
+                  </v-textarea>
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-menu
+                  ref="menu"
+                  v-model="menu"
+                  :close-on-content-click="false"
+                  transition="scale-transition"
+                  offset-y
+                  min-width="290px"
+                >
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-text-field
+                      v-model="date"
+                      label="Birthday date"
+                      prepend-icon="mdi-calendar"
+                      readonly
+                      v-bind="attrs"
+                      v-on="on"
+                    ></v-text-field>
+                  </template>
+                  <v-date-picker
+                    ref="picker"
+                    v-model="date"
+                    :max="new Date().toISOString().substr(0, 10)"
+                    min="1950-01-01"
+                    @change="save"
+                    locale="fa-ir"
+                  ></v-date-picker>
+                </v-menu>
+              </v-row>
+            </v-container>
+          </v-form>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="blue darken-1" text @click="dialog = false">
             Close
           </v-btn>
-          <v-btn color="blue darken-1" text @click="dialog = false">
-            Save
-          </v-btn>
+          <v-btn color="blue darken-1" text @click="submit"> Save </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -93,7 +107,26 @@ export default {
   data() {
     return {
       dialog: false,
+      date: null,
+      menu: false,
+      title: "",
+      content: "",
+      status: "",
+      person: "",
     };
+  },
+  watch: {
+    menu(val) {
+      val && setTimeout(() => (this.$refs.picker.activePicker = "YEAR"));
+    },
+  },
+  methods: {
+    submit() {
+      this.dialog = false;
+    },
+    save(date) {
+      this.$refs.menu.save(date);
+    },
   },
 };
 </script>

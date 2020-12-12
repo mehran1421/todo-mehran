@@ -84,24 +84,28 @@ export default {
           person: "mehran",
           due: "12/9/1399",
           status: "ongoing",
+          content: "lfsjlfjljfs",
         },
         {
           title: "Code up the homepage",
           person: "zali",
           due: "14/5/1398",
           status: "complete",
+          content: "lfsjlfjljfs",
         },
         {
           title: "Design video thumbnails",
           person: "hossein",
           due: "1/11/1395",
           status: "complete",
+          content: "lfsjlfjljfs",
         },
         {
           title: "Create a community forum",
           person: "farshad",
           due: "9/2/1401",
           status: "overdue",
+          content: "lfsjlfjljfs",
         },
       ],
     };
