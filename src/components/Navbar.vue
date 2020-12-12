@@ -24,6 +24,14 @@
       absolute
       class="light-blue darken-4"
     >
+      <v-responsive class="pt-4">
+        <v-row justify="center">
+          <v-avatar size="100">
+            <img src="/1.jpg" />
+          </v-avatar>
+          <p class="white--text">Mehran Kamrani</p>
+        </v-row>
+      </v-responsive>
       <v-list nav dense>
         <v-list-item-group v-model="selectedItem" color="white">
           <v-list-item
