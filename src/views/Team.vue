@@ -49,7 +49,7 @@ export default {
         },
         {
           name: "ali Mohammadi maava",
-          role: "front and english languech",
+          role: "front and english teacher",
           avatar: "/3.jpg",
         },
         {
@@ -62,3 +62,5 @@ export default {
   },
 };
 </script>
+<style scoped></style>
+>

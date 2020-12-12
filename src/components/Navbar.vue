@@ -13,7 +13,27 @@
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
-      <span right class="white--text font-weight-black">SIGN OUT</span>
+      <div class="text-center">
+        <v-menu offset-y>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn outlined color="white" dark v-bind="attrs" v-on="on">
+              <v-icon left small>mdi-expand_more</v-icon>
+              <span>Menu</span>
+            </v-btn>
+          </template>
+          <v-list>
+            <v-list-item
+              v-for="(item, index) in items"
+              :key="index"
+              router
+              :to="item.rout"
+            >
+              <v-list-item-title>{{ item.text }}</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </div>
+      <span right class="white--text font-weight-black ml-4">SIGN OUT</span>
       <v-btn icon>
         <v-icon class="font-weight-bold">mdi-export</v-icon>
       </v-btn>
