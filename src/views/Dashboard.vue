@@ -3,11 +3,35 @@
     <v-row justify="center">
       <h1 class="subheading blue--text align-center">dashboard</h1>
     </v-row>
+
     <v-container class="my-5">
+      <v-row align="left" class="mb-5">
+        <v-btn
+          tile
+          color="grey lighten-4"
+          small
+          elevation="5"
+          @click="sortBy('title')"
+        >
+          <v-icon small left>mdi-folder</v-icon>
+          <span class="caption">by project name </span>
+        </v-btn>
+        <v-btn
+          tile
+          color="grey lighten-4"
+          small
+          class="ml-3"
+          elevation="5"
+          @click="sortBy('person')"
+        >
+          <v-icon small left>mdi-person</v-icon>
+          <span class="caption">by person</span>
+        </v-btn>
+      </v-row>
       <v-row
         v-for="project in projects"
         :key="project.title"
-        class="white pa-3 flat"
+        class="white pa-3 flat mb-1"
       >
         <div flat :class="`project ${project.status}`"></div>
         <v-col cols="11" sm="11" md="6">
@@ -49,7 +73,7 @@ export default {
         },
         {
           title: "Code up the homepage",
-          person: "ali",
+          person: "zali",
           due: "14/5/1398",
           status: "complete",
         },
@@ -67,6 +91,11 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    sortBy(prob) {
+      this.projects.sort((a, b) => (a[prob] < b[prob] ? -1 : 1));
+    },
   },
 };
 </script>
